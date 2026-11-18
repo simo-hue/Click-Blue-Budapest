@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blue Pest · Live the Danube again</title>
+<meta name="description" content="Blue Pest brings Budapest back to the Danube: one platform brought back to life, an open riverbank, and room to grow.">
+<meta name="theme-color" content="#084e81">
+<meta property="og:title" content="Blue Pest · Live the Danube again">
+<meta property="og:description" content="One platform brought back to life, an open riverbank, and room to grow.">
+<meta property="og:image" content="water.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #084e81;
+    --blue-mid: #3b73a7;
+    --white: #ffffff;
+    --ink: #0b1620;
+    --gutter: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.35;
+    overflow-x: hidden;
+  }
+  .water {
+    background: var(--blue) url("water.jpg") center / cover no-repeat;
+    color: var(--white);
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+  h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+  ul, ol { list-style: none; }
+
+  /* Section number badge, as on the slides */
+  .badge {
+    position: absolute; top: 0; right: 0;
+    width: 56px; height: 52px;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 1.75rem; line-height: 1;
+    background: var(--blue); color: var(--white);
+  }
+  .badge.light { background: var(--blue-mid); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 14px 0 0; overflow: hidden; }
+  .hero::before { /* thin inset frame from the title slide */
+    content: ""; position: absolute; inset: 12px -2px auto 12px; height: 62%;
+    border: 1px solid rgba(255,255,255,.45); border-right: 0; border-bottom: 0;
+    border-top-left-radius: 6px; pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(5.5rem, 31vw, 15rem);
+    line-height: .85;
+    text-align: right;
+    margin-right: -0.04em;
+    padding-top: 6px;
+  }
+  .hero h1 span { display: block; }
+  .tagline {
+    font-weight: 700;
+    font-size: clamp(1.45rem, 6.4vw, 3rem);
+    letter-spacing: -0.01em;
+    margin: 18px 0 14px;
+  }
+  .video {
+    position: relative; aspect-ratio: 16 / 9; width: 100%;
+    background: #05365b;
+    box-shadow: 0 18px 40px rgba(2, 24, 43, .45);
+  }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .values {
+    font-weight: 700;
+    font-size: clamp(1.9rem, 9vw, 4.5rem);
+    line-height: .95;
+    letter-spacing: -0.02em;
+    padding: 30px 0 34px;
+  }
+  .values span { display: block; }
+
+  /* ---------- Problem ---------- */
+  .problem { position: relative; padding: 64px 0 0; }
+  .problem h2, .impact h2 {
+    color: var(--blue);
+    font-size: clamp(3.6rem, 19vw, 8.5rem);
+    line-height: .88;
+  }
+  .kicker {
+    display: inline-block;
+    color: var(--blue); font-weight: 700;
+    font-size: 1.3rem;
+    border-left: 2px solid var(--blue);
+    border-bottom: 2px solid var(--blue);
+    padding: 2px 28px 4px 8px;
+    margin: 22px 0 24px;
+  }
+  .numbered li {
+    display: flex; align-items: baseline; gap: 14px;
+    font-weight: 700;
+    font-size: clamp(1.45rem, 6.6vw, 2.2rem);
+    line-height: 1.15;
+    padding: 9px 0;
+  }
+  .numbered li b { color: var(--blue); min-width: 2.1em; }
+  .strip { height: 110px; margin-top: 44px; }
+
+  /* ---------- Plan ---------- */
+  .plan { position: relative; background: var(--blue); color: var(--white); padding: 64px 0 60px; }
+  .plan h2 { font-size: clamp(3.6rem, 19vw, 8.5rem); line-height: .88; }
+  .plan .sub { font-weight: 700; font-size: 1.05rem; margin: 14px 0 30px; opacity: .95; }
+  .steps { display: grid; gap: 22px; }
+  .step { background: var(--blue-mid); padding: 24px 22px 26px; position: relative; }
+  .step .label {
+    display: inline-block; background: var(--white); color: var(--blue);
+    font-weight: 700; font-size: .95rem; letter-spacing: .04em; text-transform: uppercase;
+    padding: 5px 10px; margin-bottom: 14px;
+  }
+  .step h3 { font-size: clamp(1.7rem, 7.4vw, 2.4rem); line-height: 1; margin-bottom: 16px; }
+  .step li {
+    position: relative; padding: 9px 0 9px 20px;
+    font-size: 1.08rem; line-height: 1.32;
+    border-top: 1px solid rgba(255,255,255,.28);
+  }
+  .step li::before {
+    content: ""; position: absolute; left: 0; top: 1.02em;
+    width: 8px; height: 8px; background: var(--white);
+  }
+
+  /* ---------- Impact ---------- */
+  .impact { position: relative; padding: 64px 0 0; overflow: hidden; }
+  .impact .list { margin-top: 26px; }
+  .impact .list li {
+    display: flex; gap: 14px; align-items: baseline;
+    font-size: 1.15rem; line-height: 1.32; padding: 11px 0;
+  }
+  .impact .list b.n { color: var(--blue); font-size: 1.35rem; min-width: 2.1em; }
+  .impact .blocks { display: grid; grid-template-columns: 1fr 1fr; height: 120px; margin-top: 44px; }
+  .impact .blocks .solid { background: var(--blue-mid); }
+  .impact .blocks .water { border-top-left-radius: 120px; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 60px 0 44px; position: relative; }
+  footer h2 { font-size: clamp(3rem, 15.5vw, 7.5rem); line-height: .9; }
+  footer .names {
+    display: flex; flex-wrap: wrap; gap: 6px 26px;
+    font-weight: 700; font-size: 1.3rem; margin-top: 26px;
+    padding-top: 18px; border-top: 1px solid rgba(255,255,255,.5);
+  }
+
+  /* ---------- Wider screens ---------- */
+  @media (min-width: 820px) {
+    :root { --gutter: 40px; }
+    .hero { padding-top: 24px; }
+    .hero::before { inset: 24px -2px auto 24px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: end; }
+    .hero h1 { font-size: clamp(8rem, 17vw, 15rem); grid-column: 2; grid-row: 1; }
+    .hero-left { grid-column: 1; grid-row: 1; padding-bottom: 14px; }
+    .tagline { margin-top: 0; }
+    .badge { width: 84px; height: 78px; font-size: 2.6rem; }
+    .problem .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .problem, .plan, .impact { padding-top: 96px; }
+    .steps { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .step { padding: 32px 30px 34px; }
+    .impact .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: end; }
+    .impact .list { margin-top: 0; }
+    .impact .blocks, .strip { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero water">
+  <div class="wrap hero-grid">
+    <h1><span>Blue</span><span>Pest</span></h1>
+    <div class="hero-left">
+      <p class="tagline">Live the Danube again</p>
+      <div class="video">
+        <!-- VIDEO: to swap in the final film, replace the ID after /embed/ (currently a Budapest placeholder) -->
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/V-OV8u-HBvk?rel=0&modestbranding=1"
+          title="Blue Pest: live the Danube again"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="values"><span>Connection.</span><span>Wellbeing.</span><span>Care.</span></p>
+  </div>
+</header>
+
+<main>
+  <section class="problem">
+    <div class="badge">01</div>
+    <div class="wrap">
+      <h2>The Problem</h2>
+      <div>
+        <p class="kicker">The Danube today</p>
+        <ol class="numbered">
+          <li><b>01.</b>No access.</li>
+          <li><b>02.</b>No place to meet.</li>
+          <li><b>03.</b>A lost relationship.</li>
+          <li><b>04.</b>Noise.</li>
+          <li><b>05.</b>No watersports.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="strip water" aria-hidden="true"></div>
+  </section>
+
+  <section class="plan">
+    <div class="badge light">02</div>
+    <div class="wrap">
+      <h2>The Plan</h2>
+      <p class="sub">Two steps, starting with one platform in front of BME.</p>
+      <div class="steps">
+        <article class="step">
+          <span class="label">Step 1</span>
+          <h3>One platform, brought back to life</h3>
+          <ul>
+            <li>Rebuild and extend the platform in front of BME, ringed with floating green plants.</li>
+            <li>Open up the beach upstream: cleaned, greened, with stairs down to the water.</li>
+            <li>A club that looks after the place and runs organised watersports with local sports clubs.</li>
+            <li>School workshops that bring the river into the classroom.</li>
+            <li>Public toilets at street level, open to everyone.</li>
+          </ul>
+        </article>
+        <article class="step">
+          <span class="label">Step 2</span>
+          <h3>Quiet, and room to grow</h3>
+          <ul>
+            <li>A see-through noise barrier of plants and walls along the street, made from sustainable materials. Open to all, not a private area.</li>
+            <li>One more floating dock, built with a system proven on the Danube.</li>
+            <li>New uses on the water, such as a fitness area.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact">
+    <div class="badge">03</div>
+    <div class="wrap">
+      <h2>Our Impact</h2>
+      <ol class="list">
+        <li><b class="n">01.</b><span><b>Economic.</b> New blue jobs, tourism and sponsorship.</span></li>
+        <li><b class="n">02.</b><span><b>Social.</b> A community space that reconnects citizens with the Danube.</span></li>
+        <li><b class="n">03.</b><span><b>Environmental.</b> A cleaner, greener riverbank, and a generation of schoolchildren who know their river.</span></li>
+      </ol>
+    </div>
+    <div class="blocks" aria-hidden="true"><div class="solid"></div><div class="water"></div></div>
+  </section>
+</main>
+
+<footer class="water">
+  <div class="wrap">
+    <h2>See you in Budapest</h2>
+    <p class="names"><span>Andreas</span><span>Simone</span><span>Saeed</span></p>
+  </div>
+</footer>
+
+</body>
+</html>
