@@ -45,7 +45,7 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 
 ### Step 1: Activate one pontoon
 - **Extend** the existing pontoon.
-- **Green trash stopper:** floating wetland plants around the extended part, combined with a floating boom that guides litter into a catch basin (see "How the trash stopper works").
+- **Green trash stopper:** a ring of planted hexagon modules (floating wetlands) around the extended pontoon catches floating litter, helped by a floating boom that guides litter into a catch basin (see "How the trash stopper works"). The hexagons are made from recycled plastic (see Technical approach).
 - **Toilets:** accessible chemical toilets at street level, open to everyone.
 - **Clean-up:** clean and open up a **20 m stretch of bank along the river, starting from the pontoon**.
 - **Community club:** founded to run and maintain the site.
@@ -56,21 +56,23 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 - **Noise buffer:** a see-through line of plants and panels from sustainable materials along the street. It calms the space without walling it off like a private area.
 - **Beach link:** extend the cleaned beach area **to the second pontoon**.
 - **Second pontoon:** make it bigger and greener.
+- **Public sport and health equipment on the pontoons:** easy-to-install, free equipment that anyone can use. One pontoon gets an outdoor calisthenics (bodyweight workout) area; the other gets other healthy, sporty uses, such as an open deck for yoga and stretching. Equipment is bolted onto the decks, so it can be added, moved or taken in for winter.
 
 ### Step 3: Modular platforms for people
 - **Jetfloat HDPE modules:** square 50 × 50 cm blocks that click together in 50 cm steps, for floating platforms people can use (sitting, gathering, events).
-- **Blupest hexagon modules from recycled plastic:** we recycle the plastic collected by our trash stoppers into hexagon modules that link together, so the platform grows as more plastic is collected. Proven in Rotterdam, where CLEAR RIVERS turned river plastic into 28 linked hexagon blocks. [src]
+- **More recycled hexagon modules:** the green hexagon ring keeps growing into seating pods and floating gardens that link the platforms together.
 
 ### Technical approach
 - **Pontoon core:** concrete pontoons (e.g. Marinetek) for stability against ship wakes.
 - **Add-ons:** Jetfloat HDPE modules (Austrian maker, since 1971; single element 50 × 50 × 40 cm) [src: Jetfloat catalogue], plus hexagon modules made from plastic caught by our trash stoppers (recycling partner: CLEAR RIVERS) [TBC with CLEAR RIVERS].
-- **Green trash stopper:** floating wetland mats plus a floating boom and catch basin (below).
+- **Green trash stopper:** planted hexagon modules plus a floating boom and catch basin (below).
+- **Recycled hexagon modules:** linked hexagon modules made from recycled plastic. From day one we use recycled plastic from other sources (e.g. CLEAR RIVERS and PET Kupa collections); over time, the plastic our own trash stoppers collect is added. Proven in Rotterdam, where CLEAR RIVERS turned river plastic into 28 linked hexagon blocks. [src]
 
 ### How the trash stopper works
 1. **Boom:** a floating barrier, a tube with a short skirt hanging below the surface, is anchored upstream of the pontoon at an angle to the current.
 2. **Guiding:** the current pushes floating litter along the angled boom, away from the shipping lane and towards the pontoon.
 3. **Catch basin:** at the end of the boom, litter enters a passive basin attached to the pontoon (like the CLEAR RIVERS trap at BME). It uses no energy; fish and water pass underneath.
-4. **Green edge:** floating wetland mats line the boom and the pontoon edge. Their roots and stems hold smaller pieces, give habitat and hide the boom, so it looks like a green island rather than a barrier.
+4. **Green hexagon ring:** planted hexagon modules line the boom and the pontoon edge. Their roots and stems hold smaller pieces, give habitat and hide the boom, so it looks like a green island rather than a barrier.
 5. **Emptying:** the club and volunteers empty the basin, e.g. weekly, sort the litter and record what they find. The data feeds the school workshops, and the plastic is recycled into our hexagon modules (Step 3).
 6. **Floods and ships:** the boom only covers the bank side and has a quick release for high water, ice and ship traffic [TBC with the water authority].
 - **Mooring:** piles or chains so everything rises and falls with the water level; HDPE add-ons can be removed for winter, ice and floods.
@@ -79,7 +81,7 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 ### Features
 - **Core loop (Step 1):** clean bank → green pontoon → sports events and workshops → toilets → people come back and help care for it.
 - **Engagement:** club membership, sports events, school workshops.
-- **Later:** noise buffer, beach link, second pontoon (Step 2); Jetfloat and recycled hexagon platforms (Step 3).
+- **Later:** noise buffer, beach link, second pontoon, public calisthenics and yoga decks (Step 2); Jetfloat platforms and more hexagon modules (Step 3).
 
 ## 3. USP and competitors
 
@@ -148,10 +150,11 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 | Pontoon extension (concrete units, ~150–250 m²) | €150,000–300,000 (basis: factory price ~$550–580/m² before transport and installation [src: supplier listing]) |
 | Floating wetland edge (~200 m² × €150–300/m²) | €30,000–60,000 (basis: built projects cost A$22 to A$3,800/m² [src: CSIRO 2025]) |
 | Boom and catch basin | €15,000–50,000 |
+| Recycled hexagon modules for the green ring (with CLEAR RIVERS) | TBC with CLEAR RIVERS |
 | Bank clean-up, 20 m stretch | €10,000–30,000 |
 | Accessible chemical toilets (2–4 units, season) | €3,000–6,000 |
 | Club set-up and first season | €30,000–50,000 |
-| **Total Step 1** | **~€235,000–500,000** |
+| **Total Step 1** | **~€235,000–500,000 + hexagon modules (TBC)** |
 
 ### Step 2: Grow along the bank [est]
 | Item | Cost |
@@ -159,13 +162,14 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 | See-through green noise buffer (~100–150 m long, ~2 m high = 200–300 m²) | €120,000–450,000 (basis: living walls ~£500–800/m² installed [src: MyBuilder]) |
 | Beach link to second pontoon | €80,000–200,000 |
 | Second pontoon: enlarge and green | €150,000–300,000 |
-| **Total Step 2** | **~€350,000–950,000** |
+| Public calisthenics equipment and yoga deck | €10,000–30,000 [est] |
+| **Total Step 2** | **~€360,000–980,000** |
 
 ### Step 3: Modular platforms [est]
 | Item | Cost |
 |---|---|
 | Jetfloat HDPE modules (~200–400 m² installed, €300–600/m²) | €60,000–240,000 (basis: basic HDPE float platforms ~€230/m² net, materials only [src: e-surfer]) |
-| Recycled hexagon modules (sorting, recycling, moulds; with CLEAR RIVERS) | TBC with CLEAR RIVERS |
+| More recycled hexagon modules (seating pods, gardens) | TBC with CLEAR RIVERS |
 
 ### Running cost per season [est]
 ~€20,000–40,000: toilets, insurance, plants and materials, trash disposal. **No paid staff:** Blupest is a community space, maintained by the club and volunteers.
@@ -225,11 +229,11 @@ We don't build from zero. We upgrade an **existing pontoon** and the bank next t
 
 - **Hackathon demo:** aerial concept image, pitch, this plan (Vienna, 24 Nov 2026).
 - **Phase 0:** partners and permits (VALYO, CLEAR RIVERS, District XI, BME); choose the pilot pontoon; found the club.
-- **Phase 1 (Step 1):** extend the first pontoon, green edge and trash stopper, toilets, 20 m bank clean-up.
+- **Phase 1 (Step 1):** extend the first pontoon, green hexagon trash stopper, toilets, 20 m bank clean-up.
 - **Phase 2 (Step 1):** first season: sports events and school workshops.
 - **Phase 3 (Step 2):** see-through green noise buffer.
-- **Phase 4 (Step 2):** beach link to the second pontoon; enlarge and green it.
-- **Phase 5 (Step 3):** Jetfloat modular platforms, plus the first hexagon modules from our own collected plastic.
+- **Phase 4 (Step 2):** beach link to the second pontoon; enlarge and green it; public calisthenics and yoga equipment on the pontoons.
+- **Phase 5 (Step 3):** Jetfloat modular platforms, plus more hexagon modules, including ones from our own collected plastic.
 - **Phase 6:** repeat the model at other Budapest pontoons.
 
 ## 12. Open items
