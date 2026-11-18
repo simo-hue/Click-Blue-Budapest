@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
 <meta property="og:title" content="Blue Pest · Live the Danube again">
 <meta property="og:description" content="One platform brought back to life, an open riverbank, and room to grow.">
 <meta property="og:image" content="water.jpg">
+<script>document.documentElement.classList.remove("no-js");</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&display=swap" rel="stylesheet">
@@ -94,6 +95,105 @@
   .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
   .hero-rule { width: 1px; height: 44px; margin: 0 auto; background: var(--blue); opacity: .55; }
 
+  /* ---------- Pictures: shared ---------- */
+  /* Six watercolours of the same view, cropped to 16:9 like the film. */
+  .pics {
+    position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+    background: #dfe8ef;
+    margin: 0 calc(-1 * var(--gutter)); /* edge to edge on phones, like the film */
+  }
+  .pics img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    -webkit-user-drag: none; user-select: none; pointer-events: none;
+  }
+  .pic-tag { /* square label, as on the Step cards */
+    position: absolute; top: 10px; z-index: 3;
+    background: var(--blue); color: var(--white);
+    font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: 5px 9px; pointer-events: none; transition: opacity .2s;
+  }
+
+  /* ---------- Compare: today / vision ---------- */
+  .compare { padding: 36px 0 56px; color: var(--blue); }
+  .compare h2 { font-size: clamp(2.4rem, 11vw, 4.6rem); line-height: .92; }
+  .compare-intro { font-size: 1.05rem; line-height: 1.4; margin: 12px 0 18px; max-width: 40ch; }
+  .compare .pics { touch-action: pan-y; cursor: ew-resize; -webkit-tap-highlight-color: transparent; }
+  .compare .pic-today { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+  .pic-tag.l { left: 10px; }
+  .pic-tag.r { right: 10px; }
+  .divider {
+    position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); z-index: 2;
+    width: 2px; margin-left: -1px; background: var(--white);
+    box-shadow: 0 0 0 1px rgba(8, 78, 129, .25);
+    pointer-events: none;
+  }
+  .handle { /* square badge with two arrows */
+    position: absolute; top: 50%; z-index: 4;
+    left: clamp(26px, var(--pos, 50%), calc(100% - 26px)); /* stays whole at the ends */
+    width: 52px; height: 52px; margin: -26px 0 0 -26px;
+    display: grid; place-items: center;
+    background: var(--blue); border: 2px solid var(--white);
+    box-shadow: 0 4px 14px rgba(2, 24, 43, .35);
+    cursor: ew-resize; touch-action: pan-y; outline: none;
+  }
+  .handle::before, .handle::after { /* arrows */
+    content: ""; position: absolute; top: 50%; margin-top: -7px;
+    border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+  }
+  .handle::before { left: 9px; border-right: 9px solid var(--white); }
+  .handle::after { right: 9px; border-left: 9px solid var(--white); }
+  .handle:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; box-shadow: 0 0 0 9px var(--blue); }
+  .compare-hint {
+    font-size: .85rem; letter-spacing: .02em; margin-top: 10px; opacity: .8;
+  }
+  .no-js .handle, .no-js .compare-hint { display: none; }
+
+  /* ---------- Sequence: today to step 2 ---------- */
+  .seq { margin-bottom: 34px; }
+  .seq .pics img { visibility: hidden; }
+  .no-js .seq .pics img:last-of-type { visibility: visible; } /* without JS: the full vision */
+  .seq:not(.ready) .pics img:first-of-type { visibility: visible; } /* with JS: today, until ready */
+  .no-js .seq .pics img:first-of-type { visibility: hidden; }
+  .seq.ready .pics img { visibility: hidden; clip-path: none; z-index: 0; }
+  .seq.ready .pics img.base { visibility: visible; z-index: 1; }
+  .seq.ready .pics img.incoming { visibility: visible; z-index: 2; clip-path: inset(0 100% 0 0); }
+  .seq.ready .pics img.incoming.go { clip-path: inset(0 0 0 0); transition: clip-path var(--wipe, .8s) cubic-bezier(.65, 0, .25, 1); }
+  /* going back (the loop restart, or a tap on an earlier stage) fades instead of wiping */
+  .seq.ready .pics img.incoming.fade { clip-path: none; opacity: 0; }
+  .seq.ready .pics img.incoming.fade.go { clip-path: none; opacity: 1; transition: opacity var(--fade, .6s) ease; }
+  .seq .pic-tag { z-index: 4; }
+  .no-js .seq .pic-tag { display: none; }
+  .seq .edge { /* the white line that leads each wipe, echoing the compare divider */
+    position: absolute; top: 0; bottom: 0; left: 0; z-index: 3; width: 2px; margin-left: -1px;
+    background: var(--white); opacity: 0; pointer-events: none;
+  }
+  .seq .edge.go { opacity: 1; left: 100%; transition: left var(--wipe, .8s) cubic-bezier(.65, 0, .25, 1); }
+  .seq-cap { margin-top: 4px; min-height: 3.2rem; } /* room for the longest caption, so nothing below jumps */
+  .seq-cap p { font-size: 1.05rem; line-height: 1.35; }
+  .seq-cap b { display: block; font-size: 1.2rem; line-height: 1.15; }
+  .marks { display: grid; grid-template-columns: 1fr 3fr 2fr; gap: 10px; margin-top: -3px; }
+  .marks .grp { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; }
+  .marks .grp-name {
+    grid-column: 1 / -1; grid-row: 2;
+    font-size: .78rem; font-weight: 700; margin-top: -8px; letter-spacing: .08em; text-transform: uppercase; opacity: .75; transition: opacity .3s;
+  }
+  .marks .grp.on .grp-name { opacity: 1; }
+  .marks button {
+    grid-row: 1; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+    position: relative;
+  }
+  .marks button::before, .marks button i {
+    content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 4px; margin-top: -2px;
+    background: rgba(255, 255, 255, .3);
+  }
+  .marks button i { right: auto; width: 0; background: var(--white); }
+  .marks button.past i { width: 100%; }
+  .marks button.now i { width: 100%; transition: width var(--hold, 1.6s) linear; }
+  .marks button.now.reset i { width: 0; transition: none; }
+  .marks button:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+  .no-js .marks, .no-js .seq-cap { display: none; }
+
   /* ---------- Problem ---------- */
   .problem { position: relative; padding: 64px 0 0; }
   .problem h2, .impact h2 {
@@ -177,6 +277,19 @@
     .film-cue { font-size: 1.9rem; margin-bottom: 16px; }
     .film-note { font-size: 1rem; max-width: none; }
     .badge { width: 84px; height: 78px; font-size: 2.6rem; }
+    .pics { margin: 0; }
+    .pic-tag { top: 14px; font-size: .85rem; }
+    .pic-tag.l { left: 14px; }
+    .pic-tag.r { right: 14px; }
+    .compare { padding-top: 56px; padding-bottom: 72px; }
+    .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: 20px; }
+    .compare h2 { white-space: nowrap; }
+    .compare-intro { margin: 0; font-size: 1.15rem; max-width: 34ch; }
+    .handle { width: 60px; height: 60px; margin: -30px 0 0 -30px; left: clamp(30px, var(--pos, 50%), calc(100% - 30px)); }
+    .seq-cap { min-height: 2.8rem; }
+    .seq { width: min(100%, calc((100svh - 260px) * 16 / 9)); } /* picture, marks and caption on one laptop screen */
+    .seq-cap p { font-size: 1.15rem; }
+    .seq-cap b { font-size: 1.35rem; }
     .problem .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .problem, .plan, .impact { padding-top: 96px; }
     .steps { grid-template-columns: 1fr 1fr; gap: 28px; }
@@ -217,6 +330,31 @@
 </header>
 
 <main>
+  <section class="compare" aria-labelledby="compare-title">
+    <div class="wrap">
+      <div class="compare-head">
+          <h2 id="compare-title">Today. Tomorrow.</h2>
+          <p class="compare-intro">The riverbank in front of BME as it is now, and as Blue Pest wants it to be.</p>
+        </div>
+        <div class="pics" id="compare">
+          <img src="img/6-800.jpg" srcset="img/6-800.jpg 800w, img/6.jpg 1400w"
+               sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw"
+               width="1400" height="788" loading="lazy" decoding="async" draggable="false"
+               alt="Tomorrow: stairs down to a green beach, the platform ringed with floating plants, a second dock with a fitness area, and a green noise barrier along the street.">
+          <img class="pic-today" src="img/1-800.jpg" srcset="img/1-800.jpg 800w, img/1.jpg 1400w"
+               sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw"
+               width="1400" height="788" loading="lazy" decoding="async" draggable="false"
+               alt="Today: a bare stone quay below the road, one small pontoon, and no way down to the water.">
+          <span class="pic-tag l">Today</span>
+          <span class="pic-tag r">Tomorrow</span>
+          <div class="divider" aria-hidden="true"></div>
+          <div class="handle" role="slider" tabindex="0" aria-label="Compare today and tomorrow"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="Half today, half tomorrow"></div>
+        </div>
+        <p class="compare-hint">Drag or tap to compare.</p>
+    </div>
+  </section>
+
   <section class="problem">
     <div class="badge">01</div>
     <div class="wrap">
@@ -240,6 +378,24 @@
     <div class="wrap">
       <h2>The Plan</h2>
       <p class="sub">Two steps, starting with one platform in front of BME.</p>
+      <figure class="seq" id="seq" aria-label="The riverbank changing from today, through Step 1, to Step 2">
+        <div class="pics">
+          <img src="img/1-800.jpg" srcset="img/1-800.jpg 800w, img/1.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="">
+          <img src="img/2-800.jpg" srcset="img/2-800.jpg 800w, img/2.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="">
+          <img src="img/3-800.jpg" srcset="img/3-800.jpg 800w, img/3.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="">
+          <img src="img/4-800.jpg" srcset="img/4-800.jpg 800w, img/4.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="">
+          <img src="img/5-800.jpg" srcset="img/5-800.jpg 800w, img/5.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="">
+          <img src="img/6-800.jpg" srcset="img/6-800.jpg 800w, img/6.jpg 1400w" sizes="(min-width: 1120px) 1040px, (min-width: 820px) calc(100vw - 80px), 67vw" width="1400" height="788" loading="lazy" decoding="async" alt="Step 2 complete: a second floating dock with a fitness area, a green noise barrier along the street, the platform and the open beach.">
+          <div class="edge" aria-hidden="true"></div>
+          <span class="pic-tag l" aria-hidden="true">Today</span>
+        </div>
+        <div class="marks" role="group" aria-label="Stages">
+          <div class="grp"><button type="button" aria-label="Today"><i></i></button><span class="grp-name">Today</span></div>
+          <div class="grp"><button type="button" aria-label="Step 1: the beach"><i></i></button><button type="button" aria-label="Step 1: the platform"><i></i></button><button type="button" aria-label="Step 1: on the water"><i></i></button><span class="grp-name">Step 1</span></div>
+          <div class="grp"><button type="button" aria-label="Step 2: quiet"><i></i></button><button type="button" aria-label="Step 2: room to grow"><i></i></button><span class="grp-name">Step 2</span></div>
+        </div>
+        <figcaption class="seq-cap" aria-hidden="true"><p><b>Today</b>A stone quay. No way down.</p></figcaption>
+      </figure>
       <div class="steps">
         <article class="step">
           <span class="label">Step 1</span>
@@ -286,5 +442,223 @@
   </div>
 </footer>
 
+<script>
+(() => {
+  "use strict";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clamp = (v) => Math.max(0, Math.min(100, v));
+  const reflow = (el) => void el.offsetWidth;
+
+  /* ---------- Compare slider: today (left) / vision (right) ---------- */
+  const box = document.getElementById("compare");
+  if (box) {
+    const handle = box.querySelector(".handle");
+    const tagL = box.querySelector(".pic-tag.l"), tagR = box.querySelector(".pic-tag.r");
+    let pos = 50, touched = false, tween = 0;
+
+    const set = (v) => {
+      pos = clamp(v);
+      box.style.setProperty("--pos", pos + "%");
+      const p = Math.round(pos);
+      handle.setAttribute("aria-valuenow", p);
+      handle.setAttribute("aria-valuetext",
+        p <= 0 ? "Tomorrow only" : p >= 100 ? "Today only" : p + "% today, " + (100 - p) + "% tomorrow");
+      tagL.style.opacity = pos < 16 ? 0 : 1;
+      tagR.style.opacity = pos > 84 ? 0 : 1;
+    };
+    const animateTo = (to, ms) => new Promise((done) => {
+      const from = pos, t0 = performance.now(), id = ++tween;
+      const step = (t) => {
+        if (id !== tween) return done(false);
+        const k = Math.min(1, (t - t0) / ms), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        set(from + (to - from) * e);
+        k < 1 ? requestAnimationFrame(step) : done(true);
+      };
+      requestAnimationFrame(step);
+    });
+    const xToPos = (x) => { const r = box.getBoundingClientRect(); return (x - r.left) / r.width * 100; };
+
+    // Touch, on the handle or anywhere on the picture: a sideways swipe drags, a vertical
+    // swipe scrolls the page (touch-action: pan-y), a tap moves the line there.
+    // Mouse: press anywhere and drag.
+    let drag = null;
+    box.addEventListener("pointerdown", (e) => {
+      if (e.button > 0) return;
+      touched = true; tween++;
+      const onHandle = e.target === handle;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, live: false, onHandle,
+               offset: onHandle ? pos - xToPos(e.clientX) : 0, touch: e.pointerType !== "mouse" };
+      if (!drag.touch) {
+        drag.live = true;
+        box.setPointerCapture(e.pointerId);
+        if (!onHandle) set(xToPos(e.clientX));
+        e.preventDefault();
+      }
+    });
+    box.addEventListener("pointermove", (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!drag.live) {
+        const dx = Math.abs(e.clientX - drag.x), dy = Math.abs(e.clientY - drag.y);
+        if (dx > 6 && dx > dy) { drag.live = true; box.setPointerCapture(e.pointerId); }
+        else return;
+      }
+      set(xToPos(e.clientX) + drag.offset);
+    });
+    const end = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const tap = e.type === "pointerup" && !drag.live && drag.touch && !drag.onHandle &&
+                  Math.abs(e.clientX - drag.x) < 8 && Math.abs(e.clientY - drag.y) < 8;
+      if (tap) animateTo(clamp(xToPos(e.clientX)), 280);
+      drag = null;
+    };
+    box.addEventListener("pointerup", end);
+    box.addEventListener("pointercancel", end);
+
+    handle.addEventListener("keydown", (e) => {
+      const map = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5, PageDown: -20, PageUp: 20 };
+      let v = null;
+      if (e.key in map) v = pos + map[e.key];
+      else if (e.key === "Home") v = 0;
+      else if (e.key === "End") v = 100;
+      if (v === null) return;
+      e.preventDefault(); touched = true; tween++; set(v);
+    });
+
+    set(50);
+
+    // One gentle nudge the first time the picture is well in view, to show it moves.
+    if (!reduce && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        setTimeout(async () => {
+          if (touched) return;
+          (await animateTo(64, 500)) && (await animateTo(38, 650)) && animateTo(50, 450);
+        }, 350);
+      }, { threshold: .7 });
+      io.observe(box);
+    }
+  }
+
+  /* ---------- Sequence: today -> step 1 -> step 2, wiping left to right ---------- */
+  const seq = document.getElementById("seq");
+  if (seq) {
+    const STAGES = [ // [group, title, line]
+      ["Today", "Today", "A stone quay. No way down."],
+      ["Step 1", "Open the beach", "Stairs down to a green beach."],
+      ["Step 1", "The platform", "Rebuilt, ringed with floating plants."],
+      ["Step 1", "On the water", "Watersports with local clubs."],
+      ["Step 2", "Quiet", "A see-through green noise barrier."],
+      ["Step 2", "Room to grow", "A second dock, a fitness area."]
+    ];
+    const WIPE = 800;                                  // ms, each left-to-right sweep
+    const FADE = 600;                                  // ms, going back (loop restart, earlier stage)
+    const HOLD = [2000, 2000, 2000, 2000, 2000, 3400]; // ms per stage, sweep included; the last one rests longer
+    const TAP_HOLD = 8000;                             // ms a tapped stage stays before auto-play resumes
+    const LAST = STAGES.length - 1;
+    const imgs = [...seq.querySelectorAll(".pics img")];
+    const edge = seq.querySelector(".edge");
+    const tag = seq.querySelector(".pic-tag");
+    const text = seq.querySelector(".seq-cap p");
+    const groups = [...seq.querySelectorAll(".marks .grp")];
+    const marks = [...seq.querySelectorAll(".marks button")];
+    const decoded = imgs.map(() => false);
+    const hoverable = matchMedia("(min-width: 820px) and (hover: hover)");
+    let cur = 0, timer = 0, ready = false, inView = false, running = false, paused = false, holdUntil = 0;
+
+    seq.style.setProperty("--wipe", WIPE + "ms");
+    seq.style.setProperty("--fade", FADE + "ms");
+
+    const stageMs = () => Math.max(HOLD[cur], holdUntil - Date.now());
+    const paint = (i) => {
+      tag.textContent = STAGES[i][0];
+      groups.forEach((g) => g.classList.toggle("on", g.contains(marks[i])));
+      text.innerHTML = "<b>" + STAGES[i][1] + "</b>" + STAGES[i][2];
+      seq.style.setProperty("--hold", (running ? stageMs() : 0) + "ms");
+      marks.forEach((m, k) => {
+        m.classList.toggle("past", k < i);
+        m.classList.toggle("now", k === i);
+        m.firstElementChild.style.width = "";
+        if (k === i) { m.classList.add("reset"); reflow(m); m.classList.remove("reset"); }
+        m.setAttribute("aria-current", k === i ? "step" : "false");
+      });
+    };
+    const settle = (i) => imgs.forEach((im, k) => { im.className = k === i ? "base" : ""; });
+    const show = (i, animate) => {
+      const prev = cur;
+      cur = i;
+      paint(i);
+      if (!animate || i === prev) return settle(i);
+      const back = i < prev; // 6 -> 1 at the loop, or a tap on an earlier stage
+      imgs.forEach((im, k) => { im.className = k === prev ? "base" : ""; });
+      const inc = imgs[i];
+      inc.className = back ? "incoming fade" : "incoming";
+      edge.classList.remove("go");
+      reflow(inc);
+      inc.classList.add("go");
+      if (!back) edge.classList.add("go");
+      setTimeout(() => { if (cur === i) { settle(i); edge.classList.remove("go"); } }, (back ? FADE : WIPE) + 30);
+    };
+    const schedule = (ms) => {
+      clearTimeout(timer);
+      timer = setTimeout(function tick() {
+        const next = cur === LAST ? 0 : cur + 1;
+        if (!decoded[next]) { timer = setTimeout(tick, 150); return; } // never sweep in an undecoded picture
+        show(next, true);
+        schedule();
+      }, ms === undefined ? stageMs() : ms);
+    };
+    const update = () => {
+      const go = ready && inView && !paused && !reduce && !document.hidden;
+      if (go === running) return;
+      running = go;
+      if (go) { paint(cur); schedule(); }
+      else {
+        clearTimeout(timer);
+        marks.forEach((m) => { const bar = m.firstElementChild; bar.style.width = getComputedStyle(bar).width; });
+      }
+    };
+
+    // A tapped stage stays put for a while; hovering or keyboard focus pauses.
+    marks.forEach((m, k) => m.addEventListener("click", () => {
+      if (!decoded[k]) return;
+      holdUntil = Date.now() + TAP_HOLD;
+      show(k, !reduce);
+      if (running) schedule();
+    }));
+    const pause = (on) => { paused = on; if (on) update(); else { running = false; update(); } };
+    seq.addEventListener("mouseenter", () => { if (hoverable.matches) pause(true); });
+    seq.addEventListener("mouseleave", () => { if (paused) pause(false); });
+    seq.addEventListener("focusin", (e) => { if (e.target.matches(":focus-visible")) pause(true); });
+    seq.addEventListener("focusout", (e) => { if (!seq.contains(e.relatedTarget) && paused) pause(false); });
+
+    const start = () => {
+      imgs.forEach((im, k) => {
+        im.loading = "eager";
+        im.decode().catch(() => {}).then(() => {
+          decoded[k] = true;
+          // Start as soon as today and the first change can play (or, without motion, the final picture).
+          if (!ready && (reduce ? decoded[LAST] : decoded[0] && decoded[1])) {
+            ready = true;
+            seq.classList.add("ready");
+            show(reduce ? LAST : 0, false);
+            update();
+          }
+        });
+      });
+    };
+
+    if ("IntersectionObserver" in window) {
+      const near = new IntersectionObserver((es) => {
+        if (es[0].isIntersecting) { near.disconnect(); start(); }
+      }, { rootMargin: "600px 0px" });
+      near.observe(seq);
+      new IntersectionObserver((es) => { inView = es[0].isIntersecting; update(); },
+        { threshold: .35 }).observe(seq.querySelector(".pics"));
+    } else { inView = true; start(); }
+    document.addEventListener("visibilitychange", update);
+  }
+})();
+</script>
 </body>
 </html>
